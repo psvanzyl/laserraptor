@@ -1,0 +1,453 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   LASERRAPTOR — design system
+   A 1980s arcade night: near-black canvas, neon magenta + cyan, chrome type.
+   Tokens are role-named. Dark is the only theme; the art direction is the
+   product, so there is no light-mode compromise.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-void: #04030a;
+  --color-canvas: #08060f;
+  --color-panel: #0d0a1a;
+  --color-panel-2: #141026;
+  --color-raise: #1a1430;
+  --color-line: #241b3d;
+  --color-line-soft: #191231;
+  --color-ink: #f7f3ff;
+  --color-body: #cfc7e6;
+  --color-muted: #a79cc6;
+  --color-magenta: #ff2e88;
+  --color-cyan: #3ce9ff;
+  --color-amber: #ffb43d;
+  --color-violet: #7c4dff;
+
+  --font-display: var(--font-audiowide), "Arial Black", system-ui, sans-serif;
+  --font-sans: var(--font-chakra), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --shadow-neon: 0 0 0 1px rgba(255, 46, 136, 0.45), 0 12px 42px -12px rgba(255, 46, 136, 0.55);
+  --shadow-panel: 0 24px 70px -30px rgba(0, 0, 0, 0.9);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --house-pad: 12px;
+    --house-max: 1600px;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --house-pad: 20px;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    background: var(--color-canvas);
+  }
+
+  body {
+    background: var(--color-canvas);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-magenta);
+    color: #08060f;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: var(--color-void);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2b2148;
+    border: 2px solid var(--color-void);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-magenta);
+  }
+}
+
+/* ---------------------------------------------------------------- layout -- */
+
+.house {
+  width: 100%;
+  max-width: var(--house-max);
+  margin-inline: auto;
+  padding-inline: var(--house-pad);
+}
+
+.house-narrow {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: var(--house-pad);
+}
+
+/* ------------------------------------------------------------------ type -- */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--color-magenta);
+  box-shadow: 0 0 8px var(--color-magenta);
+}
+
+.eyebrow-plain::before {
+  display: none;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.chrome {
+  background: linear-gradient(
+    176deg,
+    #ffffff 4%,
+    #d9d5f5 26%,
+    #8f9bd8 44%,
+    #ff2e88 50%,
+    #ffd9ea 56%,
+    #ffffff 72%,
+    #b9b2d8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.16));
+}
+
+.neon-cyan {
+  color: var(--color-cyan);
+  text-shadow: 0 0 18px rgba(60, 233, 255, 0.55);
+}
+
+.neon-magenta {
+  color: var(--color-magenta);
+  text-shadow: 0 0 22px rgba(255, 46, 136, 0.5);
+}
+
+.outline-type {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(247, 243, 255, 0.34);
+}
+
+/* ---------------------------------------------------------------- chrome -- */
+
+.rule {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-line), transparent);
+}
+
+.hr-hot {
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-magenta), rgba(255, 46, 136, 0) 70%);
+  box-shadow: 0 0 14px rgba(255, 46, 136, 0.5);
+}
+
+.bevel {
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+}
+
+.bevel-sm {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.panel {
+  background: linear-gradient(180deg, var(--color-panel) 0%, #0a0716 100%);
+  border: 1px solid var(--color-line);
+}
+
+/* ------------------------------------------------------------------ grid -- */
+
+.footer-link {
+  color: var(--color-body);
+  transition: color 180ms ease;
+}
+
+.footer-link:hover {
+  color: var(--color-cyan);
+}
+
+.grid-floor {
+  background-image:
+    linear-gradient(to right, rgba(255, 46, 136, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(60, 233, 255, 0.18) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse 70% 90% at 50% 20%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 20%, #000 20%, transparent 78%);
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.045) 0 1px,
+    rgba(0, 0, 0, 0) 1px 3px
+  );
+  opacity: 0.55;
+  z-index: 2;
+}
+
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 80% at 50% 45%, transparent 40%, rgba(4, 3, 10, 0.86) 100%);
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------- buttons -- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #08060f;
+  background: var(--color-magenta);
+  border: 1px solid var(--color-magenta);
+  transition: transform 120ms ease, box-shadow 200ms ease, background 200ms ease, color 200ms ease;
+  box-shadow: 0 0 0 rgba(255, 46, 136, 0);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: #ff4d9b;
+  box-shadow: 0 10px 30px -8px rgba(255, 46, 136, 0.8);
+}
+
+.btn-ghost {
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid var(--color-line);
+}
+
+.btn-ghost:hover {
+  background: rgba(124, 77, 255, 0.12);
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+  box-shadow: 0 0 24px -8px rgba(60, 233, 255, 0.7);
+}
+
+/* ------------------------------------------------------------------- art -- */
+
+.hot-edge {
+  position: relative;
+}
+
+.hot-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg, rgba(255, 46, 136, 0.7), rgba(60, 233, 255, 0.35) 55%, transparent 80%) 1;
+  pointer-events: none;
+}
+
+.tilt {
+  transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1), border-color 240ms ease, box-shadow 320ms ease;
+}
+
+.tilt:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 46, 136, 0.55);
+  box-shadow: var(--shadow-neon);
+}
+
+/* --------------------------------------------------------------- reveal --- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------- marquee -- */
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+
+.marquee-slow {
+  animation-duration: 52s;
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ------------------------------------------------------------ lightcycle -- */
+
+.lc-ribbon {
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: ribbon 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes ribbon {
+  0% {
+    stroke-dashoffset: 420;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  78% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ cube -- */
+
+.cube-stage {
+  perspective: 780px;
+}
+
+.cube {
+  position: relative;
+  width: var(--cube, 118px);
+  height: var(--cube, 118px);
+  transform-style: preserve-3d;
+  animation: cube-spin 18s linear infinite;
+}
+
+.cube-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 4px;
+  background: #05040c;
+  border: 1px solid #2a2148;
+}
+
+.cube-tile {
+  border-radius: 1px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes cube-spin {
+  from {
+    transform: rotateX(-24deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-24deg) rotateY(360deg);
+  }
+}
+
+/* ---------------------------------------------------------- time circuit -- */
+
+.seg {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: #ffcf8a;
+  text-shadow: 0 0 10px rgba(255, 154, 61, 0.75);
+}
+
+/* -------------------------------------------------------------- reduced --- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee,
+  .cube,
+  .lc-ribbon {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .tilt:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
