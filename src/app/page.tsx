@@ -221,7 +221,7 @@ export default function HomePage() {
                         />
                       ) : (
                         <div className="absolute inset-0 grid-floor opacity-40" aria-hidden="true">
-                          <div className="flex h-full w-full items-center justify-center p-3">{art}</div>
+                          <div className="flex h-full w-full items-center justify-center">{art}</div>
                         </div>
                       )}
                       <span className="absolute left-3 top-3 border border-line/60 bg-void/80 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.2em] text-cyan">

@@ -4,7 +4,7 @@ export default function TronCycle() {
     <svg
       viewBox="0 0 700 240"
       className="h-full w-full"
-      preserveAspectRatio="xMidYMid meet"
+      preserveAspectRatio="xMidYMid slice"
       role="img"
       aria-label="Neon wireframe light cycle trailing a long ribbon of light across a grid"
     >
