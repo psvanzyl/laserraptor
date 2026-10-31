@@ -6,7 +6,7 @@ import { ARSENAL } from "@/content/site";
 export const metadata: Metadata = {
   title: "The lab",
   description:
-    "LaserRaptor is an independent software lab in Den Haag: the mothership behind Gavel and Broomy, built on 1980s reference material and official data.",
+    "LaserRaptor is an independent software lab in Den Haag: the mothership behind Gavel and Realty, built on 1980s reference material and official data.",
   alternates: { canonical: "/about" },
 };
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
             </h1>
             <p className="mt-6 max-w-[58ch] text-body">
               LaserRaptor is the name the products ship under, and the lab that builds them. Gavel
-              and Broomy are not side quests — they are the line.
+              and Realty are not side quests — they are the line.
             </p>
           </Reveal>
         </div>
@@ -58,7 +58,7 @@ export default function AboutPage() {
             <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-8">
               {[
                 ["Base", "Den Haag, NL"],
-                ["Products", "Gavel · Broomy"],
+                ["Products", "Gavel · Realty"],
                 ["Model", "Independent"],
                 ["Status", "Shipping"],
               ].map(([k, v]) => (

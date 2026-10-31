@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "web products",
     "auction data",
     "Gavel",
-    "Broomy",
+    "Realty",
     "Den Haag",
   ],
   authors: [{ name: SITE.name, url: SITE.url }],

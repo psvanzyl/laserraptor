@@ -44,7 +44,7 @@ export default function HomePage() {
             <Reveal delay={160}>
               <p className="mt-6 max-w-[52ch] text-[16.5px] leading-relaxed text-body">
                 LaserRaptor is the lab behind <span className="text-ink">Gavel</span> and{" "}
-                <span className="text-ink">Broomy</span>. We take official data, build it into tools
+                <span className="text-ink">Realty</span>. We take official data, build it into tools
                 people actually use, and dress the whole thing in arcade neon. Small operation, sharp
                 output.
               </p>

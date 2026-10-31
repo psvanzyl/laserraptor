@@ -6,24 +6,24 @@ import { PRODUCTS } from "@/content/site";
 export const metadata: Metadata = {
   title: "The line",
   description:
-    "Gavel and Broomy: the two products built by LaserRaptor. Live products, honest status, one standard.",
+    "Gavel and Realty: the two products built by LaserRaptor. One engine, one live portal, one standard.",
   alternates: { canonical: "/products" },
 };
 
 const SPECS: Record<string, [string, string][]> = {
   gavel: [
     ["Status", "Live"],
-    ["Production", "gavelll.eu"],
+    ["Running at", "realty.gavel.laserraptor.eu"],
     ["Brand domain", "gavel.laserraptor.eu"],
     ["Coverage", "NL · PL · PT · ES"],
     ["Surfaces", "Map · list · dossier"],
   ],
-  broomy: [
-    ["Status", "In the workshop"],
-    ["Production", "—"],
-    ["Brand domain", "broomy.laserraptor.eu"],
-    ["Coverage", "Under embargo"],
-    ["Surfaces", "Under embargo"],
+  realty: [
+    ["Status", "Live"],
+    ["Production", "realty.gavel.laserraptor.eu"],
+    ["Former name", "gavelll.eu"],
+    ["Coverage", "DE · ZVG"],
+    ["Surfaces", "Map · list · dossier"],
   ],
 };
 
