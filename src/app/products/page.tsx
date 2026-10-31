@@ -13,15 +13,15 @@ export const metadata: Metadata = {
 const SPECS: Record<string, [string, string][]> = {
   gavel: [
     ["Status", "Live"],
-    ["Running at", "realty.gavel.laserraptor.eu"],
+    ["Running at", "gavelll.eu"],
     ["Brand domain", "gavel.laserraptor.eu"],
     ["Coverage", "NL · PL · PT · ES"],
     ["Surfaces", "Map · list · dossier"],
   ],
   realty: [
     ["Status", "Live"],
-    ["Production", "realty.gavel.laserraptor.eu"],
-    ["Former name", "gavelll.eu"],
+    ["Production", "gavelll.eu"],
+    ["Moving to", "realty.gavel.laserraptor.eu"],
     ["Coverage", "DE · ZVG"],
     ["Surfaces", "Map · list · dossier"],
   ],
