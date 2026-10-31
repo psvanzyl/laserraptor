@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "The line",
   description:
     "Gavel and Broomy: the two products built by LaserRaptor. Live products, honest status, one standard.",
+  alternates: { canonical: "/products" },
 };
 
 const SPECS: Record<string, [string, string][]> = {

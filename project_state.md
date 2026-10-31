@@ -11,8 +11,10 @@ that ship under the brand, each on its own domain. Built on the repurposed McAi 
   velociraptors.
 
 ## Live / deploy
-- URL: https://mcflimsey.laserraptorai.duckdns.org (HTTP 200, Let's Encrypt cert, valid to 2027-01-28)
-- Alias still served: https://mcflimsey.wegoai.duckdns.org
+- Primary URL: **https://laserraptor.eu** — HTTP 200, Let's Encrypt cert valid to 2027-01-29
+  (DNS: Strato A records `@` and `www` -> 83.85.185.61, set 2026-10-31).
+- www.laserraptor.eu serves the same app with its own LE cert (no redirect; canonical points to apex).
+- Aliases still served: https://mcflimsey.laserraptorai.duckdns.org, https://mcflimsey.wegoai.duckdns.org
 - Coolify app: uuid `rwuixjdw41j1zgiwkngkkig3`, name **LaserRaptor**, project `McAi`
   (project uuid h9grge7o7j123xsdp4tsv5qs), server localhost, build pack dockerfile,
   `/Dockerfile`, ports_exposes 3000.
@@ -33,13 +35,12 @@ that ship under the brand, each on its own domain. Built on the repurposed McAi 
 - New domains get a cert within ~90 s via Traefik **TLS-ALPN** (`acme.tlschallenge=true`),
   so port 80 is not needed. Until then Traefik serves its default self-signed cert.
 
-## laserraptor.eu (blocked on DNS)
-- `laserraptor.eu`, `www`, `gavel`, `broomy` still resolve to Strato parking `217.160.0.18`.
-- To go live: set `A @ -> 83.85.185.61` and `A www -> 83.85.185.61` at Strato, then PATCH the app:
-  ```json
-  {"domains":"https://laserraptor.eu,https://www.laserraptor.eu,https://mcflimsey.laserraptorai.duckdns.org"}
-  ```
-  and trigger a deploy. Sitemap/canonical already use `https://laserraptor.eu`.
+## laserraptor.eu (live 2026-10-31)
+- Strato A `@` and `www` now point to 83.85.185.61. Coolify `domains` carries all four URLs.
+- Certs issued by Traefik via TLS-ALPN within ~3 min of the redeploy (no port 80 needed).
+- `gavel.laserraptor.eu` and `broomy.laserraptor.eu` still resolve to Strato parking -> wire them
+  when those products get their own apps.
+- Canonicals: `/`, `/products`, `/about`, `/contact` (metadata `alternates.canonical`).
 
 ## Code map
 - `src/content/site.ts` — SITE, PRODUCTS (Gavel live at gavelll.eu; Broomy in the workshop),

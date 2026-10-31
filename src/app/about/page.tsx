@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "The lab",
   description:
     "LaserRaptor is an independent software lab in Den Haag: the mothership behind Gavel and Broomy, built on 1980s reference material and official data.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

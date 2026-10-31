@@ -67,6 +67,7 @@ export const metadata: Metadata = {
     images: ["/img/og.webp"],
   },
   icons: { icon: "/favicon.svg", apple: "/favicon.svg" },
+  alternates: { canonical: "/" },
   robots: { index: true, follow: true },
 };
 

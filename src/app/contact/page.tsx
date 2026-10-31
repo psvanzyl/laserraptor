@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "One address for the LaserRaptor lab: product questions, partnerships and press. No forms, no trackers.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
