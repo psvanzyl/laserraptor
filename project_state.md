@@ -1,8 +1,8 @@
 # LaserRaptor — project state
 
 ## What this is
-Brand/mothership site for **LaserRaptor** (laserraptor.eu). Gavel and Broomy are the products
-that ship under the brand, each on its own domain. Built on the repurposed McAi Coolify app
+Brand/mothership site for **LaserRaptor** (laserraptor.eu). Gavel and Realty are the products
+that ship under the brand, each on its own domain. (Broomy was dropped 2026-10-31.) Built on the repurposed McAi Coolify app
 (the old McKinsey-clone demo was retired for this).
 
 - Look: cyberpunk / 1980s arcade. Near-black canvas, neon magenta + cyan, chrome display type,
@@ -15,6 +15,7 @@ that ship under the brand, each on its own domain. Built on the repurposed McAi 
   (DNS: Strato A records `@` and `www` -> 83.85.185.61, set 2026-10-31).
 - www.laserraptor.eu serves the same app with its own LE cert (no redirect; canonical points to apex).
 - Aliases still served: https://mcflimsey.laserraptorai.duckdns.org, https://mcflimsey.wegoai.duckdns.org
+- Products: Gavel (auction engine) + Realty (property portal on the Gavel engine).
 - Coolify app: uuid `rwuixjdw41j1zgiwkngkkig3`, name **LaserRaptor**, project `McAi`
   (project uuid h9grge7o7j123xsdp4tsv5qs), server localhost, build pack dockerfile,
   `/Dockerfile`, ports_exposes 3000.
@@ -38,12 +39,26 @@ that ship under the brand, each on its own domain. Built on the repurposed McAi 
 ## laserraptor.eu (live 2026-10-31)
 - Strato A `@` and `www` now point to 83.85.185.61. Coolify `domains` carries all four URLs.
 - Certs issued by Traefik via TLS-ALPN within ~3 min of the redeploy (no port 80 needed).
-- `gavel.laserraptor.eu` and `broomy.laserraptor.eu` still resolve to Strato parking -> wire them
-  when those products get their own apps.
+- `gavel.laserraptor.eu` and `broomy.laserraptor.eu` still resolve to Strato parking. Broomy is
+  retired; gavel.laserraptor.eu stays reserved for the platform brand page.
+
+## Realty cutover (gavelll.eu -> realty.gavel.laserraptor.eu) — ARMED, waiting on DNS
+- 2026-10-31: boss chose `realty.gavel.laserraptor.eu` as the product home (not gavel.laserraptor.eu).
+- Required DNS at Strato: `A realty.gavel -> 83.85.185.61` (no record exists yet).
+- Already done: Traefik route on CT310 (`/data/coolify/proxy/dynamic/zvg-app.yml`) matches
+  `realty.gavel.laserraptor.eu` -> zvg-app on CT141:3000; host test returns 302 http->https.
+- Removed `gavel.laserraptor.eu` from Coolify app hfwzozwfsiwim6b9nwfwd9cz (it was firing failing
+  ACME orders and hit the LE failed-authorization limit: 5/hour).
+- Cron `gavel-laserraptor-cutover` (1b6f7b4e124f, every 10 min, script only) now targets realty.
+  When DNS resolves it: waits for HTTPS 200, flips PAYWALL_BASE_URL to
+  https://realty.gavel.laserraptor.eu, redeploys, installs `/root/.hermes/state/zvg-app.realty.yml`
+  (which turns gavelll.eu into a 301 to realty), verifies, reports, and removes itself.
+- After the cutover: repoint the site's product links from gavelll.eu to
+  realty.gavel.laserraptor.eu (site.ts, two `href` fields) and update the website URL in Mollie.
 - Canonicals: `/`, `/products`, `/about`, `/contact` (metadata `alternates.canonical`).
 
 ## Code map
-- `src/content/site.ts` — SITE, PRODUCTS (Gavel live at gavelll.eu; Broomy in the workshop),
+- `src/content/site.ts` — SITE, PRODUCTS (Gavel + Realty, both linking to gavelll.eu until the cutover),
   ARSENAL (the five references), PRINCIPLES.
 - `src/app/page.tsx` — hero + time circuits, marquee, product line, statement band, arsenal,
   the lab, CTA.
@@ -64,6 +79,5 @@ that ship under the brand, each on its own domain. Built on the repurposed McAi 
 
 ## Unknowns to confirm with boss
 - `hello@laserraptor.eu` is used site-wide as the contact address. Not verified to exist.
-- Broomy is presented as "in the workshop / unannounced" because no product description was
-  supplied. Replace `PRODUCTS[1]` in `src/content/site.ts` when the spec exists.
+- Broomy was replaced by Realty on 2026-10-31 (boss instruction). No Broomy copy remains.
 - Footer says "Est. 2026".
