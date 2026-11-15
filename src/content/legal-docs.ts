@@ -47,7 +47,7 @@ const DPA: LegalDoc = {
   title: "Data Processing Agreement",
   kicker: "Article 28 GDPR",
   summary:
-    "How LaserRaptor processes personal data on behalf of a customer, which measures protect it, and what happens at the end of the contract.",
+    "How LaserRaptor processes personal data on behalf of a customer, what measures protect it, and what happens at the end of the contract.",
   meta: "This DPA applies to every paid Broomy subscription and to any other LaserRaptor service that handles personal data for a customer.",
   clauses: [
     {
