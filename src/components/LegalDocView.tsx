@@ -62,7 +62,7 @@ export default function LegalDocView({ doc }: { doc: LegalDoc }) {
             </div>
           </aside>
 
-          <article className="max-w-[66ch]">
+          <article className="max-w-[58ch]">
             {doc.clauses.map((c, i) => (
               <section key={c.id} id={c.id} className="scroll-mt-28 border-t border-line-soft pt-8 first:border-0 first:pt-0 [&+section]:mt-10">
                 <h2 className="flex items-baseline gap-3 text-[clamp(1.05rem,2vw,1.35rem)] not-italic">
