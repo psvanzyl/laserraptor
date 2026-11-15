@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ENTITY } from "@/content/legal-docs";
 import { PRODUCTS, SITE } from "@/content/site";
 
 export default function Footer() {
@@ -8,7 +9,7 @@ export default function Footer() {
     <footer className="relative mt-24 overflow-hidden border-t border-line bg-void">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-magenta/70 to-transparent" />
       <div className="house py-14">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
             <p className="font-display text-3xl leading-none tracking-[0.08em] text-ink">
               LASER<span className="neon-magenta">RAPTOR</span>
@@ -52,6 +53,18 @@ export default function Footer() {
             </Link>
           </FooterCol>
 
+          <FooterCol title="Legal">
+            <Link href="/legal/dpa" className="footer-link">
+              DPA
+            </Link>
+            <Link href="/legal/sub-processors" className="footer-link">
+              Sub-processors
+            </Link>
+            <Link href="/legal/privacy" className="footer-link">
+              Privacy
+            </Link>
+          </FooterCol>
+
           <FooterCol title="Coordinates">
             <span className="footer-link">52.0705° N, 4.3007° E</span>
             <span className="footer-link">CET / UTC+1</span>
@@ -60,7 +73,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-line-soft pt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>© {year} {SITE.name}. All rights reserved.</span>
+          <span>
+            © {year} {SITE.name} · KvK {ENTITY.kvk} · All rights reserved.
+          </span>
           <span className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span>No cookies</span>
             <span className="text-line">/</span>

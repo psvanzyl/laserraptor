@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "Software with sharp teeth",
   description:
     "LaserRaptor is an independent software lab in Den Haag. We build data-heavy web products with arcade attitude — Gavel, Realty and whatever hatches next.",
-  email: "hello@laserraptor.eu",
+  email: "info@laserraptor.eu",
   location: "Den Haag, NL",
   nav: [
     { href: "/products", label: "Products" },

@@ -4,6 +4,13 @@ const nextConfig: NextConfig = {
   output: "standalone",
   images: { unoptimized: true },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      { source: "/privacy", destination: "/legal/privacy", permanent: true },
+      { source: "/dpa", destination: "/legal/dpa", permanent: true },
+      { source: "/sub-processors", destination: "/legal/sub-processors", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

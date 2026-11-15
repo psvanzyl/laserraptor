@@ -2,7 +2,8 @@
 
 ## What this is
 Brand/mothership site for **LaserRaptor** (laserraptor.eu). Gavel and Realty are the products
-that ship under the brand, each on its own domain. (Broomy was dropped 2026-10-31.) Built on the repurposed McAi Coolify app
+that ship under the brand, each on its own domain. Broomy is the subsidiary AI product line
+(EU-hosted model rental) and is live again as of 2026-11-15. Built on the repurposed McAi Coolify app
 (the old McKinsey-clone demo was retired for this).
 
 - Look: cyberpunk / 1980s arcade. Near-black canvas, neon magenta + cyan, chrome display type,
@@ -77,7 +78,20 @@ that ship under the brand, each on its own domain. (Broomy was dropped 2026-10-3
 - Fonts: `public/fonts/*.woff2` — Audiowide 400, Chakra Petch 400/500/600/700, JetBrains Mono
   400/500 (latin subsets pulled from the Google Fonts CSS, no CDN at build or run time).
 
+## Broomy (subsidiary product line) — reinstated 2026-11-15
+
+- Live: https://broomy.laserraptor.eu (200, title "Broomy — rent a Qwen 3.8 model by the month").
+  `/api/v1/models` returns 401 `invalid_api_key` without a key — auth gate works.
+- Source: CT141 `/root/projects/rent-llm/app` (repo psvanzyl/rent-llm). Coolify app
+  `ogvo9qf354oyhjrhroihu2dk` on apps-01 .132. Plans live in `src/lib/plans.ts` (basic 2000, pro 5000).
+- LaserRaptor site still lists only Gavel + Realty. Broomy must be added to `src/content/site.ts`
+  PRODUCTS and get its own `/broomy` route plus the demo chat widget.
+- GTM plan: `docs/gtm/2026-11-15-gtm-broomy.md` (segments, sourcing recipe, pricing, site plan,
+  demo-chat endpoint spec, 90-day roadmap, outreach templates).
+- Open blockers from the plan: sensei licence (QCL1.0, no commercial MaaS resale), no DPA or
+  sub-processor page, unverified contact address, single GPU slot vs. Pro's 3-concurrent promise.
+
 ## Unknowns to confirm with boss
 - `hello@laserraptor.eu` is used site-wide as the contact address. Not verified to exist.
-- Broomy was replaced by Realty on 2026-10-31 (boss instruction). No Broomy copy remains.
+- Broomy was dropped 2026-10-31 and reinstated 2026-11-15 by boss instruction; the site copy was never restored.
 - Footer says "Est. 2026".
