@@ -43,7 +43,7 @@ export default function LegalDocView({ doc }: { doc: LegalDoc }) {
                   href={`#${c.id}`}
                   className="group flex gap-2.5 text-[13px] leading-snug text-muted transition-colors hover:text-ink"
                 >
-                  <span className="font-mono text-[10px] text-line group-hover:text-cyan">
+                  <span className="font-mono text-[10px] text-muted/70 group-hover:text-cyan">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span>{c.heading}</span>
@@ -62,7 +62,7 @@ export default function LegalDocView({ doc }: { doc: LegalDoc }) {
             </div>
           </aside>
 
-          <article className="max-w-[74ch]">
+          <article className="max-w-[66ch]">
             {doc.clauses.map((c, i) => (
               <section key={c.id} id={c.id} className="scroll-mt-28 border-t border-line-soft pt-8 first:border-0 first:pt-0 [&+section]:mt-10">
                 <h2 className="flex items-baseline gap-3 text-[clamp(1.05rem,2vw,1.35rem)] not-italic">
@@ -103,12 +103,12 @@ export default function LegalDocView({ doc }: { doc: LegalDoc }) {
 function BlockView({ block }: { block: Block }) {
   switch (block.t) {
     case "p":
-      return <p className="text-[15px] leading-[1.75] text-body">{block.text}</p>;
+      return <p className="text-[15.5px] leading-[1.75] text-body">{block.text}</p>;
     case "ul":
       return (
         <ul className="space-y-2.5">
           {block.items.map((item, i) => (
-            <li key={i} className="flex gap-3 text-[15px] leading-[1.7] text-body">
+            <li key={i} className="flex gap-3 text-[15.5px] leading-[1.7] text-body">
               <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-magenta" />
               <span>{item}</span>
             </li>
@@ -119,7 +119,7 @@ function BlockView({ block }: { block: Block }) {
       return (
         <ol className="space-y-3">
           {block.items.map((item, i) => (
-            <li key={i} className="flex gap-3 text-[15px] leading-[1.7] text-body">
+            <li key={i} className="flex gap-3 text-[15.5px] leading-[1.7] text-body">
               <span className="mt-0.5 shrink-0 font-mono text-[11px] text-cyan">
                 {String(i + 1).padStart(2, "0")}
               </span>
