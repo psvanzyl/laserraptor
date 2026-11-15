@@ -87,11 +87,18 @@ that ship under the brand, each on its own domain. Broomy is the subsidiary AI p
 - LaserRaptor site still lists only Gavel + Realty. Broomy must be added to `src/content/site.ts`
   PRODUCTS and get its own `/broomy` route plus the demo chat widget.
 - GTM plan: `docs/gtm/2026-11-15-gtm-broomy.md` (segments, sourcing recipe, pricing, site plan,
-  demo-chat endpoint spec, 90-day roadmap, outreach templates).
-- Open blockers from the plan: sensei licence (QCL1.0, no commercial MaaS resale), no DPA or
-  sub-processor page, unverified contact address, single GPU slot vs. Pro's 3-concurrent promise.
+  demo-chat spec plus prompt-injection controls, 90-day roadmap, outreach templates).
+- Legal hub live 2026-11-15: `/legal`, `/legal/dpa`, `/legal/sub-processors`, `/legal/privacy`.
+  Canonical source: `src/content/legal-docs.ts`, rendered by `src/components/LegalDocView.tsx`.
+  Product sites must link the hub, not copy the text. `/privacy`, `/dpa`, `/sub-processors` redirect.
+- Prices changed 2026-11-15: Basic EUR 39, Pro EUR 99 (`plans.ts` 3900/9900, plus landing, dashboard,
+  FAQ, metadata, and honest queue wording). Contact address is info@laserraptor.eu — hello@ is gone.
+- Demo chat is NOT built. It needs the controls in plan section 7.5 and the 10-prompt red-team set first.
+- Open blockers from the plan: sensei licence (QCL1.0, no commercial MaaS resale — boss will swap to
+  Apache-2.0 when ready), single GPU slot vs. Pro's 3-concurrent promise (boss accepts waiting time),
+  SLA wording still to be written.
 
 ## Unknowns to confirm with boss
-- `hello@laserraptor.eu` is used site-wide as the contact address. Not verified to exist.
+- Contact address: `info@laserraptor.eu` is confirmed and now used site-wide. `hello@` does not exist.
 - Broomy was dropped 2026-10-31 and reinstated 2026-11-15 by boss instruction; the site copy was never restored.
 - Footer says "Est. 2026".

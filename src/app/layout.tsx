@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BroomyChat from "@/components/BroomyChat";
 import { SITE } from "@/content/site";
 
 const display = localFont({
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <BroomyChat />
       </body>
     </html>
   );
